@@ -1,0 +1,49 @@
+.App {
+    margin-top: 100px;
+    width: 800px;
+}
+
+#root {
+    display: flex;
+    justify-content: center;
+}
+
+.post {
+    border: 1px solid blue;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+
+}
+
+.post-btn {
+    border: 2px solid blue;
+    padding: 2px;
+    margin: 2px;
+    margin-right: 10px;
+}
+
+.post-content {
+    margin: 10px 15px 15px 10px;
+
+}
+
+.remove-btn {
+  margin-right: 0.5rem;
+}
+
+.item-enter {
+  opacity: 0;
+}
+.item-enter-active {
+  opacity: 1;
+  transition: all 500ms ease-in-out;
+}
+.item-exit {
+  opacity: 1;
+}
+.item-exit-active {
+  transform: translateX(350px);
+  transition: all 500ms ease-in-out;
+}
