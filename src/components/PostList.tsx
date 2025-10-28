@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import PostItem from "./PostItem";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 
-const PostList = ({ posts, title, remove }) => {
+const PostList = ({ posts, title, remove, reOrder }) => {
   // создаём объект, в котором будут храниться ссылки для каждого поста
   const nodeRefs = useRef({});
 
@@ -18,7 +18,7 @@ const PostList = ({ posts, title, remove }) => {
         {title}
       </h1>
 
-      <TransitionGroup>
+     
         {posts.map((post) => {
           // создаём ref для каждого поста, если его нет
           if (!nodeRefs.current[post.id]) {
@@ -31,6 +31,9 @@ const PostList = ({ posts, title, remove }) => {
               nodeRef={nodeRefs.current[post.id]}
               timeout={500}
               classNames="item"
+              in={!post.isDeleted}         // вот ключевой момент!
+              onExited={() => reOrder(post)} // когда анимация закончилась
+              unmountOnExit
             >
               <div ref={nodeRefs.current[post.id]}>
                 <PostItem remove={remove} post={post} />
@@ -38,7 +41,7 @@ const PostList = ({ posts, title, remove }) => {
             </CSSTransition>
           );
         })}
-      </TransitionGroup>
+     
     </div>
   );
 };

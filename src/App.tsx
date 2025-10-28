@@ -19,15 +19,21 @@ function App() {
   }
 
   const removePost = (post) => {
+  setPosts(prevPosts =>
+    prevPosts.map(p =>
+      p.id === post.id ? { ...p, isDeleted: true } : p
+    )
+  );
+};
+
+
+  const reOrder = (post) => {
+    console.log('reOrer')
+     setPosts(prev => {
+      const filtered = prev.filter(p => post.id !== p.id);
+      return filtered.map((p, index) => ({ ...p, id: (index+1).toString() }))
+    });
     
-    const updatedPosts = posts.filter(p => p.id !== post.id)
-
-    const postsWithNewIds = updatedPosts.map((post, index) => ({
-      ...post,
-      id: (index + 1).toString()
-    }));
-
-    setPosts(postsWithNewIds)
   }
 
   const [filter, setFilter] = useState({query: '', selected: ''}) 
@@ -41,7 +47,6 @@ const searchQuaryEdited = (e) => {
 }
 
   const sortedPosts = useMemo(() => {
-    console.log('Сработал getSortedPosts')
     if (filter.selected) {
     return [...posts].sort((a, b) => a[filter.selected].localeCompare(b[filter.selected]))} return posts;  
   }, [filter.selected, posts]) 
@@ -61,7 +66,7 @@ const searchQuaryEdited = (e) => {
           
             {sortedAndSearchedPostsByTitle.length !== 0 
               ? 
-              <PostList remove={removePost} posts={sortedAndSearchedPostsByTitle} title="Posts list" />
+              <PostList reOrder={reOrder} remove={removePost} posts={sortedAndSearchedPostsByTitle} title="Posts list" />
               : 
               <h1 style={{textAlign: 'center', fontSize: '24px', fontWeight: 'bold'}}>Posts not defind</h1>
             }
