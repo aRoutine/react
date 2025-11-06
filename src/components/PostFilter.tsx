@@ -5,7 +5,7 @@ import MySelect from "./UI/select/MySelect";
 const PostFilter = ({filter, setFilter, onChangesearchQuaryEdited, onChangesortPosts}) => {
    
     const [options, setOptions] = useState([
-        {value: 'postTitle', name: 'по названию'},
+        {value: 'title', name: 'по названию'},
         {value: 'body', name: 'по описанию'}
       ])
 

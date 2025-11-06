@@ -1,0 +1,17 @@
+.MyLoader {
+    width: 60px;
+    height: 60px;
+    border: 3px dashed darkblue;
+    border-radius: 50%;
+    animation: rotate 3s infinite cubic-bezier(.74,-0.01,.42,.98);
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg) scale(1);
+    } 50% {
+        transform: rotate(180deg) scale(1.4);
+    } 100% {
+        transform: rotate(360deg) scale(1);
+    }
+}

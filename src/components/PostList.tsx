@@ -1,14 +1,25 @@
 import React, { useRef } from "react";
 import PostItem from "./PostItem";
-import { CSSTransition, TransitionGroup } from "react-transition-group";
+import { CSSTransition } from "react-transition-group";
+import PaginationItems from "./PaginationItems";
 
-const PostList = ({ posts, title, remove, reOrder }) => {
+
+
+const PostList = ({ posts, title, remove, reOrder, paginationList, setPageClick, page }) => {
   // создаём объект, в котором будут храниться ссылки для каждого поста
   const nodeRefs = useRef({});
 
+  const setPage = (page) => setPageClick(page)
+
+  if (!posts.length) {
+        return <h1 style={{textAlign: 'center', fontSize: '24px', fontWeight: 'bold'}}>Posts not defind</h1>
+      } 
+
   return (
     <div>
-      <h1
+
+
+      <h2
         style={{
           textAlign: "center",
           marginBottom: "20px",
@@ -16,7 +27,7 @@ const PostList = ({ posts, title, remove, reOrder }) => {
         }}
       >
         {title}
-      </h1>
+      </h2>
 
      
         {posts.map((post) => {
@@ -41,7 +52,7 @@ const PostList = ({ posts, title, remove, reOrder }) => {
             </CSSTransition>
           );
         })}
-     
+      <PaginationItems onPage={page} paginationList={paginationList} setPage={() => setPage}></PaginationItems>
     </div>
   );
 };

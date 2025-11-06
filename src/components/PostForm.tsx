@@ -20,10 +20,11 @@ const PostForm = ({posts, create, setVisible}) => {
 
   const addPost = (e) => {
     setVisible()
-
+    
+    const newPost = {id: posts.length + 1, title: title, body: body}
     e.preventDefault() 
 
-    const newPost = {id: posts.length + 1, postTitle: title, body: body}
+
     
     create([...posts, newPost]);
 

@@ -5,7 +5,8 @@
 
 #root {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 
 .post {
@@ -17,33 +18,96 @@
 
 }
 
-.post-btn {
-    border: 2px solid blue;
-    padding: 2px;
-    margin: 2px;
-    margin-right: 10px;
-}
+
 
 .post-content {
-    margin: 10px 15px 15px 10px;
+    margin: 15px 5px 15px 15px;
 
+}
+
+.post__btn {
+  display: flex;
+    align-items: end;
+    flex-direction: column;
+}
+
+.post-btn {
+    border: 2px solid blue;
+    margin: 2px;
+    margin-right: 10px;
+    height: 25px;
+    width: 60px;
+    
 }
 
 .remove-btn {
+  text-align: center;
   margin-right: 0.5rem;
 }
 
 .item-enter {
-  opacity: 0;
+  opacity: 1;
+ 
 }
 .item-enter-active {
   opacity: 1;
-  transition: all 500ms ease-in-out;
+  
+  
 }
 .item-exit {
   opacity: 1;
 }
 .item-exit-active {
+  opacity: 0;
   transform: translateX(350px);
-  transition: all 500ms ease-in-out;
+  transition: all 500ms cubic-bezier(.34,.14,1,.33);
+  filter: blur(5px)
+}
+
+.page {
+  padding: 10px;
+  border: 1px solid blue;
+}
+
+.page__on {
+  border: 2px solid green;
+  font-weight: 700;
+}
+
+.navbar {
+  height: 50px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  background-color: lightgrey;
+}
+
+.navbar__items {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+h1 {
+  margin-top: 100px;
+}
+
+h4{
+  color: cadetblue;
+}
+
+h5 {
+  color: blue;
+}
+
+h1 {
+  font-size: 32px;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: 700;
 }
